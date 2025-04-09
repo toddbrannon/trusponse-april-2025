@@ -123,7 +123,7 @@ function HomePage() {
     {
       id: 'excel-automation',
       label: 'Excel Automation',
-      description: 'Transform manual Excel workflows into automated solutions'
+      description: 'Transform manual spreadsheet and data workflows into automated solutions'
     },
     {
       id: 'reporting-dashboards',
