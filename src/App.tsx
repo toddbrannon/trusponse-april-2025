@@ -350,6 +350,10 @@ function HomePage() {
                   <li><Link to="/about" className="hover:text-white transition">About Us</Link></li>
                   <li><a href="#" className="hover:text-white transition">Careers</a></li>
                   <li><Link to="/contact" className="hover:text-white transition">Contact</Link></li>
+                  <Link to="https://checklist.trusponse.com" className="text-gray-600 hover:text-blue-600 font-semibold">
+                    Free Checklist
+                  </Link>
+
                 </ul>
               </div>
               <div>
