@@ -55,7 +55,7 @@ function HomePage() {
     try {
       // Format the message for better email readability
       const formattedData = {
-        _subject: New Business Inquiry from ${formData.contact_name} at ${formData.company_name},
+        _subject: `New Business Inquiry from ${formData.contact_name} at ${formData.company_name}`,
         _template: 'table',
         Contact_Information: {
           Name: formData.contact_name,
@@ -90,7 +90,7 @@ function HomePage() {
           statusText: response.statusText,
           responseData
         });
-        throw new Error(Failed to submit form: ${response.status} ${response.statusText});
+        throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`);
       }
       
       toast.success('Thank you for your submission! We\'ll be in touch soon.');
