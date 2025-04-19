@@ -584,6 +584,9 @@ function App() {
               >
                 Get Started
               </button>
+                <Link to="https://checklist.trusponse.com" className="text-gray-600 hover:text-blue-600 font-semibold">
+                  Free Checklist
+                </Link>
             </div>
           </div>
         </div>
