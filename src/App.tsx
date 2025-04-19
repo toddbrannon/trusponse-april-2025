@@ -164,12 +164,19 @@ function HomePage() {
                 Automate Your Business
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
-              <button 
+{/*               <button 
                 onClick={scrollToServices}
                 className="bg-white text-gray-800 px-8 py-4 rounded-lg text-lg font-semibold border-2 border-gray-200 hover:border-gray-300 transition flex items-center justify-center"
               >
                 Explore Solutions
                 <ChevronDown className="ml-2 h-5 w-5" />
+              </button> */}
+              <button
+                  onClick={() => window.open('https://checklist.trusponse.com', '_blank')}
+                  className="bg-white text-gray-800 px-8 py-4 rounded-lg text-lg font-semibold border-2 border-gray-200 hover:border-blue-400 transition flex items-center justify-center"
+                >
+                  Get Free Checklist
+                  <ArrowRight className="ml-2 h-5 w-5" />
               </button>
             </div>
           </div>
