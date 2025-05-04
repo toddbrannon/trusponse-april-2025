@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import matter from 'gray-matter';
@@ -34,20 +33,23 @@ const BlogList: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Blog</h1>
-      <ul>
+    <section className="max-w-4xl mx-auto py-20 px-6">
+      <h1 className="text-3xl font-bold mb-8">Latest Blog Posts</h1>
+      <ul className="space-y-8">
         {posts.map((post) => (
-          <li key={post.slug}>
-            <Link to={`/blog/${post.slug}`}>
-              <h2>{post.title}</h2>
+          <li key={post.slug} className="border-b pb-4">
+            <Link 
+              to={`/blog/${post.slug}`} 
+              className="text-2xl font-semibold text-blue-600 hover:underline"
+            >
+              {post.title}
             </Link>
-            <p>{post.date}</p>
-            <p>{post.description}</p>
+            <p className="text-gray-500 text-sm mt-1">{post.date}</p>
+            <p className="text-gray-600 mt-2">{post.description}</p>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 
