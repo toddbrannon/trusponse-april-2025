@@ -14,19 +14,28 @@ const BlogList: React.FC = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const context = require.context('../blog', false, /\.md$/);
-      const postsData = context.keys().map((key: string) => {
-        const slug = key.replace('./', '').replace('.md', '');
-        const fileContent = context(key).default;
-        const { data } = matter(fileContent);
-        return {
+      const files = import.meta.glob('../blog/*.md');
+      const loadedPosts: Post[] = [];
+
+      for (const path in files) {
+        const slug = path.split('/').pop()?.replace('.md', '') || '';
+        const file = await files[path]();
+        const { data } = matter(file.default);
+
+        loadedPosts.push({
           title: data.title,
           date: data.date,
           description: data.description,
           slug,
-        };
-      });
-      setPosts(postsData);
+        });
+      }
+
+      // Optional: sort posts by date (newest first)
+      loadedPosts.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+
+      setPosts(loadedPosts);
     };
 
     fetchPosts();
@@ -38,8 +47,8 @@ const BlogList: React.FC = () => {
       <ul className="space-y-8">
         {posts.map((post) => (
           <li key={post.slug} className="border-b pb-4">
-            <Link 
-              to={`/blog/${post.slug}`} 
+            <Link
+              to={`/blog/${post.slug}`}
               className="text-2xl font-semibold text-blue-600 hover:underline"
             >
               {post.title}
