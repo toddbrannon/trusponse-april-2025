@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import matter from 'gray-matter';
+import { Buffer } from 'buffer';
+window.Buffer = Buffer;
+
 
 interface Post {
   title: string;
@@ -14,29 +17,38 @@ const BlogList: React.FC = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const files = import.meta.glob('../blog/*.md');
+      const files = import.meta.glob('../blog/*.md', { query: '?raw', import: 'default' });
+    
+      // 🔍 Log which files were found
+      console.log('📄 Blog files found:', Object.keys(files));
+    
       const loadedPosts: Post[] = [];
-
+    
       for (const path in files) {
         const slug = path.split('/').pop()?.replace('.md', '') || '';
-        const file = await files[path]();
-        const { data } = matter(file.default);
-
-        loadedPosts.push({
-          title: data.title,
-          date: data.date,
-          description: data.description,
-          slug,
-        });
+    
+        try {
+          const file = await files[path](); // file is raw markdown string
+          const { data } = matter(file);
+    
+          console.log(`✅ Loaded: ${slug}`, data); // Debug the frontmatter
+    
+          loadedPosts.push({
+            title: data.title,
+            date: data.date,
+            description: data.description,
+            slug,
+          });
+        } catch (err) {
+          console.error(`❌ Failed to parse ${slug}`, err);
+        }
       }
-
-      // Optional: sort posts by date (newest first)
-      loadedPosts.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      );
-
+    
+      loadedPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    
       setPosts(loadedPosts);
     };
+    
 
     fetchPosts();
   }, []);
