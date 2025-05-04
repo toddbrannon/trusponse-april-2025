@@ -151,10 +151,10 @@ function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Transform Your Excel Workflows into Powerful Business Solutions
+              Tired of Tech Headaches Slowing Down Your Business?
             </h1>
             <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-              From automated Excel templates to custom software applications, we help businesses escape manual processes and embrace efficient, scalable solutions.
+              We help small business owners ditch messy spreadsheets, confusing data, and outdated websites—replacing them with smart Excel tools, clear analytics, and SEO-optimized sites that actually work for you.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button 
