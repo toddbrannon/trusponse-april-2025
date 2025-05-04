@@ -5,6 +5,8 @@ import { Toaster, toast } from 'react-hot-toast';
 import Solutions from './components/Solutions';
 import About from './components/About';
 import Contact from './components/Contact';
+import BlogList from './components/BlogList';
+import BlogPost from './components/BlogPost';
 
 function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -597,6 +599,8 @@ function App() {
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </>
   );
